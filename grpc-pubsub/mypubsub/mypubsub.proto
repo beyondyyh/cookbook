@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package mypubsub;
+
+// protoc --go_out=plugins=grpc:. pubsub.proto
+// The pubsub service definition
+service PubsubService {
+    rpc Publish (String) returns (String);
+    rpc Subscribe (String) returns (stream String);
+}
+
+// The request message containing value
+message String {
+    string value = 1;
+}
