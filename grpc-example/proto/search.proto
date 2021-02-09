@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+import "google/protobuf/wrappers.proto";
+
+service SearchService {
+    rpc Search(SearchRequest) returns (SearchResponse) {};
+}
+
+message SearchRequest {
+    string query = 1;
+    int32 page_no = 2;
+    // int32 page_size = 3;
+    google.protobuf.Int32Value page_size = 3 [default=20];
+}
+
+message SearchResponse {
+    // repeated Bundle bundles = 1; // slice
+    map<string, Bundle> bundles = 1; // map
+}
+
+message Bundle {
+    string app_id = 1;
+    string app_name = 2;
+    string url = 3; 
+}
