@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package proto;
+option go_package = ".;proto";
 
 service StreamService {
     // 服务器端流式 RPC 
